@@ -11,8 +11,17 @@
   </head>
 
   <body>
-    <%= render 'shared/header' %>
-    <%= yield %>
+    <% if logged_in? %>
+      <%= render 'shared/header' %>
+      <div class="flex-grow">
+      <%= yield %>
+      </div>
+    <% else %>
+      <%= render 'shared/before_login_header' %>
+      <div class="flex-grow">
+      <%= yield %>
+      </div>
+    <% end %>
     <%= render 'shared/footer' %>
   </body>
 </html>
