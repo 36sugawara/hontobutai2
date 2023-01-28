@@ -1,0 +1,25 @@
+<%# content_for(:og_title, t('.title')) %>
+<div class="flex justify-center h-screen w-screen items-center">
+  <div class="w-full md:w-1/2 flex flex-col items-center">
+    <h1 class="text-center text-2xl font-bold text-primary mb-6"><%= t('.title') %></h1>
+    <div class="w-3/4 mb-6">
+      <%= form_with model: @user, local: true do |f| %>
+        <%#= render 'shared/error_messages', object: f.object %>
+        <%= f.label :name, class: "label font-bold text-primary" %>
+        <%= f.text_field :name,  class: "w-full py-4 px-8 input input-bordered rounded", placeholder: "例: kame" %>
+        <%= f.label :email, class: "label font-bold text-primary" %>
+        <%= f.email_field :email, class: "w-full py-4 px-8 input input-bordered rounded", placeholder: "例: ***@example.com" %>
+        <%= f.label :password, class: "label font-bold text-primary" %>
+        <%= f.password_field :password,  class: "w-full py-4 px-8 input input-bordered rounded", placeholder: "例: password" %>
+        <%= f.label :password_confirmation, class: "label font-bold text-primary" %>
+        <%= f.password_field :password_confirmation, class: "w-full py-4 px-8 input input-bordered rounded", placeholder: "例: password" %>
+        <div class="py-4">
+          <%= f.submit t('defaults.register'), class: "btn py-4 w-full rounded text-secondary" %>
+        </div>
+      <% end %>
+      <div class="text-center">
+        <%= link_to 'ログインはこちら', login_path, class: "font-bold text-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
