@@ -1,0 +1,33 @@
+<div class="hero min-h-screen bg-base-200 flex flex-col text-base-200" style="background-image: url(<%= asset_path('top.png') %>);">
+  <div class="hero-content text-center my-40">
+    <div class="max-w-lg">
+      <h1 class="text-8xl font-bold text-primary">Hontobutai</h1>
+      <p class="py-8 text-3xl">小説や漫画と、その舞台を紐づけて<br>共有するサービス</p>
+    </div>
+  </div>
+  <div class="hero-content text-center my-12">
+    <div>
+      <h1 class="text-5xl font-bold my-16">How to use</h1>
+      <div class="hero-content flex-col lg:flex-row">
+        <div class="p-4">
+          <h2 class="text-3xl font-bold py-4">Step 1</h2>
+          <p class="text-xl pb-3">作品を調べてみよう</p>
+          <p>気になる地域を選択すると、そこに紐づく作品を調べることができます。</p>
+        </div>
+      </div>
+      <div class="hero-content flex-col lg:flex-row-reverse">
+        <div class="p-4">
+          <h2 class="text-3xl font-bold py-4">Step 2</h2>
+          <p class="text-xl pb-3">作品を投稿してみよう</p>
+          <p>自分のお気に入りの作品とその舞台を紐づけて投稿することができます。</p>
+        </div>
+      </div>
+      <%# unless logged_in? %>
+        <button class="btn my-12 text-secondary"><%#= link_to '早速はじめてみる（登録ページへ）', new_user_path %></button>
+        <div>
+          <%#= button_to 'ゲストログインしてはじめてみる', guest_login_path, class: 'btn w-100 text-secondary' %>
+        </div>
+      <%# end %>
+    </div>
+  </div>
+</div>
