@@ -53,6 +53,8 @@ gem "bootsnap", require: false
 gem 'sorcery'
 #debug
 gem 'pry-byebug'
+#日本語化
+gem 'rails-i18n'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
