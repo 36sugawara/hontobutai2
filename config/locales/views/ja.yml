@@ -1,0 +1,83 @@
+ja:
+  menu:
+    mypage: 'マイページ'
+    post: '投稿する'
+    index: '投稿一覧'
+    admin: '管理画面'
+  breadcrumbs:
+    home: 'トップ'
+    profile: 'プロフィール'
+    profile_edit: 'プロフィール編集'
+    bookmark: 'ブックマーク一覧'
+    books: '投稿一覧'
+    search: '検索'
+    new: '投稿作成'
+  defaults:
+    top: "Hontobutai"
+    login: 'ログイン'
+    logout: 'ログアウト'
+    register: '登録'
+    submit: '送信'
+    search_word: '検索ワード'
+    search: '検索'
+    delete: '削除'
+    post: '投稿'
+    message:
+      require_login: 'ログインしてください'
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成できませんでした"
+      updated: "%{item}を更新しました"
+      not_updated: "%{item}を更新できませんでした"
+      deleted: "%{item}を削除しました"
+      delete_confirm: "%{item}を削除しますか?"
+  profiles:
+    show:
+      title: 'プロフィール'
+      bookmark_title: 'ブックマーク一覧'
+      no_result: 'ブックマークした本はありません。'
+    edit:
+      title: 'プロフィール編集'
+      save: '変更を保存'
+    update:
+      success: '変更内容を保存しました'
+      fail: '変更内容を保存できませんでした'
+  bookmarks:
+    create:
+      success: 'ブックマークしました'
+    destroy:
+      success: 'ブックマークを外しました'
+  static_pages:
+    top:
+      title: 'TOP'
+    terms:
+      title: '利用規約'
+    privacy:
+      title: 'プライバシーポリシー'
+  users:
+    new:
+      title: 'ユーザー登録'
+      to_login_page: 'ログインページへ'
+    create:
+      success: 'ユーザー登録が完了しました'
+      fail: 'ユーザー登録に失敗しました'
+  user_sessions:
+    new:
+      title: 'ログイン'
+      to_register_page: '登録ページへ'
+      password_forget: 'パスワードをお忘れの方はこちら'
+    create:
+      success: 'ログインしました'
+      fail: 'ログインに失敗しました'
+    destroy:
+      success: 'ログアウトしました'
+  books:
+    index:
+      title: '投稿一覧'
+      no_result: '投稿された本はありません。'
+    search:
+      title: '作品検索'
+    new:
+      title: '投稿作成'
+    bookmarks:
+      title: 'ブックマーク一覧'
+      no_result: 'ブックマークした本はありません。'
