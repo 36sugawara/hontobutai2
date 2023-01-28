@@ -1,0 +1,23 @@
+<header class="navbar bg-neutral text-primary-content flex justify-between">
+  <div class="flex-1">
+    <%= link_to (t 'defaults.top'), root_path, class: "btn btn-ghost normal-case text-xl text-secondary" %>
+  </div>
+
+  <div class="hidden md:flex md:justify-end">
+    <ul class="menu menu-horizontal px-1 text-secondary">
+      <li><%= link_to (t 'user_sessions.new.to_register_page'), new_user_path %></li>
+      <li><%= link_to (t 'users.new.to_login_page'), login_path %></li>
+    </ul>
+  </div>
+
+  <div class="btm-nav md:hidden fixed z-50">
+    <ul class="menu menu-horizontal px-1">
+      <li class="px-4">
+        <button class="btn text-secondary"><%= link_to (t 'user_sessions.new.to_register_page'), new_user_path %></button>
+      </li>
+      <li class="px-4">
+        <button class="btn btn-primary text-secondary"><%= link_to (t 'users.new.to_login_page'), login_path %></button>
+      </li>
+    </ul>
+  </div>
+</header>
