@@ -62,6 +62,8 @@ gem 'faraday'
 #画像アップロード
 gem 'carrierwave'
 gem 'mini_magick'
+#pagenation
+gem 'kaminari'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
