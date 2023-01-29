@@ -2,7 +2,8 @@ class BooksController < ApplicationController
   before_action :set_book, only: %i[edit update destroy]
 
   def index
-    @books = Book.all.includes(:authors, :country, :prefecture).order(created_at: :desc).page(params[:page])
+    @q = Book.ransack(params[:q])
+    @books = @q.result(distinct: true).includes(:authors, :country, :prefecture).order(created_at: :desc).page(params[:page])
     set_areas
   end
 

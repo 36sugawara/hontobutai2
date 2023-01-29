@@ -2,12 +2,12 @@
 <% breadcrumb :books %>
 <div class="container mx-auto px-3 my-3">
   <!-- 検索フォーム -->
-  <%#= search_form_for @q do |f| %>
-    <%#= f.collection_select :country_area_id_eq, Area.where(id: Book.all.map{ |a| a.country.area_id }), :id, :name, {include_blank: 'エリア'}, {class: "border-gray-300 rounded-md mb-2 ml-3 w-40"} %>
-    <%#= f.collection_select :country_id_eq, Country.where(id: Book.all.map{ |a| a.country_id }), :id, :name, {include_blank: '国'}, {class: "border-gray-300 rounded-md mb-2 ml-3 w-40"} %>
-    <%#= f.collection_select :prefecture_id_eq, Prefecture.where(id: Book.all.map{ |b| b.prefecture_id }), :id, :name, {include_blank: '都道府県'}, {class: "border-gray-300 rounded-md mb-2 ml-3 w-40"} %>
-    <%#= f.submit t('defaults.search'), class: 'btn w-40 ml-3 mb-2 rounded text-secondary' %>
-  <%# end %>
+  <%= search_form_for @q do |f| %>
+    <%= f.collection_select :country_area_id_eq, Area.where(id: Book.all.map{ |a| a.country.area_id }), :id, :name, {include_blank: 'エリア'}, {class: "border-gray-300 rounded-md mb-2 ml-3 w-40"} %>
+    <%= f.collection_select :country_id_eq, Country.where(id: Book.all.map{ |a| a.country_id }), :id, :name, {include_blank: '国'}, {class: "border-gray-300 rounded-md mb-2 ml-3 w-40"} %>
+    <%= f.collection_select :prefecture_id_eq, Prefecture.where(id: Book.all.map{ |b| b.prefecture_id }), :id, :name, {include_blank: '都道府県'}, {class: "border-gray-300 rounded-md mb-2 ml-3 w-40"} %>
+    <%= f.submit t('defaults.search'), class: 'btn w-40 ml-3 mb-2 rounded text-secondary' %>
+  <% end %>
   <!-- 投稿一覧 -->
   <% if @books.present? %>
     <div class="flex flex-wrap">
