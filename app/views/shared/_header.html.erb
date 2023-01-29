@@ -11,7 +11,7 @@
         <% end %>
         <li><%= link_to t('menu.index'), books_path %></li>
         <li><%= link_to t('menu.post'), search_books_path %></li>
-        <!--li><%#= link_to t('profiles.show.title'), profile_path, class: 'dropdown-item' %></li-->
+        <li><%= link_to t('profiles.show.title'), profile_path, class: 'dropdown-item' %></li>
         <% if logged_in? %>
           <li><%= button_to "ログアウト", logout_path, method: :delete %></li>
         <% end %>
