@@ -1,0 +1,28 @@
+<% content_for(:title, t('.title')) %>
+<%# breadcrumb :profile %>
+<div class="flex items-center justify-center p-12">
+  <div class="bg-white card w-1/2 border text-primary m-3">
+    <div class="card-body">
+      <div class="flex items-center justify-center p-6">
+        <div class="form-control w-4/5 max-w-2xl">
+          <p class="text-center text-xl pb-6"><%= t '.title' %></p>
+          <div class="lg:flex">
+            <div class="place-self-center">
+              <%= image_tag current_user.avatar.url, class: 'rounded-full', size: '100x100' %>
+            </div>
+            <div class="flex flex-col justify-between py-6 pl-6">
+              <p>ユーザー名: <%= current_user.name %></p>
+              <%# if current_user.role != 'guest' %>
+                <p>メールアドレス: <%= current_user.email %></p>
+              <%# end %>
+            </div>
+          </div>
+          <%= link_to edit_profile_path do %>
+            <i class="ml-5 pt-10 fa-solid fa-pen-to-square fa-lg"></i>
+          <% end %>
+        </div>
+      </div>
+      <%#= link_to "ブックマーク一覧", bookmarks_books_path, { class: "bg-neutral hover:bg-accent text-secondary text-center font-bold py-2 px-3 mb-3 border rounded" }%>
+    </div>
+  </div>
+</div>
