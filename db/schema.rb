@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_28_083902) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_29_002200) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,38 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_28_083902) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "authors", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "book_authors", force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.bigint "author_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_book_authors_on_author_id"
+    t.index ["book_id", "author_id"], name: "index_book_authors_on_book_id_and_author_id", unique: true
+    t.index ["book_id"], name: "index_book_authors_on_book_id"
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "book_image"
+    t.text "info_link"
+    t.string "published_date"
+    t.bigint "country_id", null: false
+    t.bigint "prefecture_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.text "body", null: false
+    t.index ["country_id"], name: "index_books_on_country_id"
+    t.index ["prefecture_id"], name: "index_books_on_prefecture_id"
+    t.index ["user_id"], name: "index_books_on_user_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -36,6 +68,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_28_083902) do
     t.index ["country_id"], name: "index_prefectures_on_country_id"
   end
 
+  create_table "user_books", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_user_books_on_book_id"
+    t.index ["user_id"], name: "index_user_books_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
@@ -46,6 +87,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_28_083902) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "book_authors", "authors"
+  add_foreign_key "book_authors", "books"
+  add_foreign_key "books", "countries"
+  add_foreign_key "books", "prefectures"
+  add_foreign_key "books", "users"
   add_foreign_key "countries", "areas"
   add_foreign_key "prefectures", "countries"
+  add_foreign_key "user_books", "books"
+  add_foreign_key "user_books", "users"
 end

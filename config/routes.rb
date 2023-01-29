@@ -6,4 +6,9 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
   resources :users, only: %i[new create]
+  resources :books do
+    collection do
+      get :search
+    end
+  end
 end

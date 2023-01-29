@@ -1,0 +1,30 @@
+<% content_for(:title, @book.title) %>
+<div class="flex items-center justify-center py-12 px-4">
+  <div class="mx-auto w-full max-w-2xl">
+    <p class="flex justify-center font-bold text-primary text-xl mb-3">投稿編集</p>
+    <div class="bg-white card border-2 px-8 pt-8 rounded-lg">
+      <!-- 編集フォーム -->
+        <%= form_with model: @book, url: book_path(@book) do |f| %>
+          <%= render 'shared/error_messages' , object: f.object %>
+          <div class="card-body">
+            <div class="flex justify-center">
+              <%= image_tag @book.book_image.url, class: 'object-cover border' %>
+            </div>
+            <div class="card-body text-primary">
+              <h5 class="card-title flex justify-center"><%= @book.title.truncate(30) %></h5>
+              <p class="card-text flex justify-center"><%= @book.authors.pluck(:name).join(', ')&.truncate(10) %></p>
+              <p class="card-text flex justify-center"><small class="text-muted"><%= @book.published_date %></small></p>
+              <p class="card-text flex justify-center"><%= @area[@book.country.area_id - 1] %></p>
+              <p class="card-text flex justify-center"><%= @book.country.name %></p>
+              <p class="card-text flex justify-center"><%= @book.prefecture.name %></p>
+              <div class="flex flex-col mb-3">
+                <%= f.label :body, class: 'block form-label font-semibold text-primary mb-3' %>
+                <%= f.text_area :body, class: 'block w-full rounded-md border-gray-300', rows: 5, placeholder: '5文字以上で入力してください' %>
+              </div>
+              <%= f.submit class: "btn py-4 rounded text-secondary", id: 'submit-button' %>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

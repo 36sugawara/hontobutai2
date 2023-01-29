@@ -57,6 +57,11 @@ gem 'pry-byebug'
 gem 'rails-i18n'
 #seed data
 gem 'seed-fu'
+#API通信
+gem 'faraday'
+#画像アップロード
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
