@@ -14,6 +14,7 @@
   <body>
     <% if logged_in? %>
       <%= render 'shared/header' %>
+      <%= render 'shared/breadcrumbs' %>
       <%= render 'shared/flash_message' %>
       <div class="flex-grow">
       <%= yield %>

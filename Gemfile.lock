@@ -99,6 +99,9 @@ GEM
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    gretel (4.4.0)
+      actionview (>= 5.1, < 7.1)
+      railties (>= 5.1, < 7.1)
     hashie (5.0.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
@@ -263,6 +266,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   faraday
+  gretel
   jbuilder
   jsbundling-rails
   kaminari
