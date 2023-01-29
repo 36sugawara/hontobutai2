@@ -12,9 +12,9 @@
             </div>
             <div class="flex flex-col justify-between py-6 pl-6">
               <p>ユーザー名: <%= current_user.name %></p>
-              <%# if current_user.role != 'guest' %>
+              <% if current_user.role != 'guest' %>
                 <p>メールアドレス: <%= current_user.email %></p>
-              <%# end %>
+              <% end %>
             </div>
           </div>
           <%= link_to edit_profile_path do %>

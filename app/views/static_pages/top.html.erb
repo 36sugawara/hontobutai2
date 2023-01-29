@@ -22,12 +22,12 @@
           <p>自分のお気に入りの作品とその舞台を紐づけて投稿することができます。</p>
         </div>
       </div>
-      <%# unless logged_in? %>
-        <button class="btn my-12 text-secondary"><%#= link_to '早速はじめてみる（登録ページへ）', new_user_path %></button>
+      <% unless logged_in? %>
+        <button class="btn my-12 text-secondary"><%= link_to '早速はじめてみる（登録ページへ）', new_user_path %></button>
         <div>
-          <%#= button_to 'ゲストログインしてはじめてみる', guest_login_path, class: 'btn w-100 text-secondary' %>
+          <%= button_to 'ゲストログインしてはじめてみる', guest_login_path, class: 'btn w-100 text-secondary' %>
         </div>
-      <%# end %>
+      <% end %>
     </div>
   </div>
 </div>
