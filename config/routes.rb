@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   resources :books do
     collection do
       get :search
+      get :bookmarks
     end
   end
+  resources :bookmarks, only: %i[create destroy]
   resource :profile, only: %i[show edit update]
 end

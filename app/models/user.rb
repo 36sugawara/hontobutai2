@@ -4,6 +4,8 @@ class User < ApplicationRecord
 
   has_many :user_books, dependent: :destroy, foreign_key: 'user_id'
   has_many :books, through: :user_books
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_books, through: :bookmarks, source: :book
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -16,5 +18,17 @@ class User < ApplicationRecord
 
   def own?(object)
     id == object.user_id
+  end
+
+  def bookmark(book)
+    bookmark_books << book
+  end
+
+  def unbookmark(book)
+    bookmark_books.destroy(book)
+  end
+
+  def bookmark?(book)
+    bookmark_books.include?(book)
   end
 end

@@ -23,10 +23,10 @@
       <div class="flex">
         <% if current_user.own?(book) %>
           <%= render 'crud_menus', { book: book } %>
-        <%# else %>
-          <%# unless current_user.guest? %>
-            <%#= render 'actions/bookmark_button', { book: book } %>
-          <%# end %>
+        <% else %>
+          <% unless current_user.guest? %>
+            <%= render 'actions/bookmark_button', { book: book } %>
+          <% end %>
         <% end %>
       </div>
     </div>
