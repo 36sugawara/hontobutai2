@@ -1,0 +1,8 @@
+<% if logged_in? && current_user.own?(book) %>
+  <%= link_to edit_book_path(book), class: "px-3" do %>
+    <i class="fa-solid fa-pen-to-square fa-lg"></i>
+  <% end %>
+  <%= button_to book_path(book), method: :delete, data: {turbo_confirm: t('defaults.message.delete_confirm', item: t('defaults.post'))}, class: "px-3" do %>
+    <i class="fa-regular fa-trash-can fa-lg"></i>
+  <% end %>
+<% end %>
