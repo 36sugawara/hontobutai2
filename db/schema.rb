@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_29_070333) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_29_073544) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,6 +34,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_29_070333) do
     t.index ["author_id"], name: "index_book_authors_on_author_id"
     t.index ["book_id", "author_id"], name: "index_book_authors_on_book_id_and_author_id", unique: true
     t.index ["book_id"], name: "index_book_authors_on_book_id"
+  end
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_bookmarks_on_book_id"
+    t.index ["user_id", "book_id"], name: "index_bookmarks_on_user_id_and_book_id", unique: true
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
   create_table "books", force: :cascade do |t|
@@ -91,6 +101,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_29_070333) do
 
   add_foreign_key "book_authors", "authors"
   add_foreign_key "book_authors", "books"
+  add_foreign_key "bookmarks", "books"
+  add_foreign_key "bookmarks", "users"
   add_foreign_key "books", "countries"
   add_foreign_key "books", "prefectures"
   add_foreign_key "books", "users"

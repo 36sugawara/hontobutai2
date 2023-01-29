@@ -68,6 +68,10 @@ class BooksController < ApplicationController
     end
   end
 
+  def bookmarks
+    @bookmark_books = current_user.bookmark_books.includes(:user).order(created_at: :desc).page(params[:page])
+  end
+
   private
 
   def book_params

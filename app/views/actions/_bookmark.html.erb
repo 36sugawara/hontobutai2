@@ -1,0 +1,7 @@
+<%= turbo_frame_tag dom_id(book, :bookmark_book) do %>
+  <%= link_to bookmarks_path(book_id: book.id),
+              id: "js-bookmark-button-for-book-#{book.id}",
+              data: { turbo_method: :post } do %>
+    <i class="fa-regular fa-heart fa-lg"></i>
+  <% end %>
+<% end %>
