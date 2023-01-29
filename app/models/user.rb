@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
+  mount_uploader :avatar, AvatarUploader
 
   has_many :user_books, dependent: :destroy, foreign_key: 'user_id'
   has_many :books, through: :user_books
