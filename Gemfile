@@ -68,6 +68,10 @@ gem 'kaminari'
 gem 'gretel'
 #投稿検索
 gem 'ransack'
+#アップロード画像の保存
+gem 'fog-aws'
+#環境変数の管理
+gem 'dotenv-rails'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
