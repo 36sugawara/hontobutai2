@@ -3,6 +3,9 @@ require 'carrierwave/storage/file'
 require 'carrierwave/storage/fog'
 
 CarrierWave.configure do |config|
+  if Rails.env.development? || Rails.env.test? #開発とテストは今まで通りに
+    config.storage = :file
+  elsif Rails.env.production? #本番はS3に保存する
     config.storage :fog
     config.fog_provider = 'fog/aws'
     config.fog_directory  = 'hontobutai' # 作成したバケット名を記述
@@ -13,4 +16,5 @@ CarrierWave.configure do |config|
       region: 'ap-northeast-1',   # アジアパシフィック(東京)を選択した場合
       path_style: true
     }
+  end
 end
