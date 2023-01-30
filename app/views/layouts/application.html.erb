@@ -11,21 +11,19 @@
     <script src="https://kit.fontawesome.com/4bc901113e.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
-    <% if logged_in? %>
-      <%= render 'shared/header' %>
-      <%= render 'shared/breadcrumbs' %>
-      <%= render 'shared/flash_message' %>
-      <div class="flex-grow">
-      <%= yield %>
-      </div>
-    <% else %>
-      <%= render 'shared/before_login_header' %>
-      <%= render 'shared/flash_message' %>
-      <div class="flex-grow">
-      <%= yield %>
-      </div>
-    <% end %>
+  <body class="flex flex-col min-h-screen">
+    <div class="flex-grow">
+      <% if logged_in? %>
+        <%= render 'shared/header' %>
+        <%= render 'shared/breadcrumbs' %>
+        <%= render 'shared/flash_message' %>
+        <%= yield %>
+      <% else %>
+        <%= render 'shared/before_login_header' %>
+        <%= render 'shared/flash_message' %>
+        <%= yield %>
+      <% end %>
+    </div>
     <%= render 'shared/footer' %>
   </body>
 </html>
