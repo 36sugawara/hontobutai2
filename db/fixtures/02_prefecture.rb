@@ -45,5 +45,5 @@ Prefecture.seed(:id, [
   { id: 44, name: '大分県', country_id: 1 },
   { id: 45, name: '宮崎県', country_id: 1 },
   { id: 46, name: '鹿児島県', country_id: 1 },
-  { id: 47, name: '沖縄県', country_id: 1 },
+  { id: 47, name: '沖縄県', country_id: 1 }
 ])
