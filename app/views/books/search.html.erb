@@ -5,9 +5,9 @@
     <div class="col-lg-10 offset-lg-1">
       <!-- 検索フォーム -->
       <%= form_with url: search_books_path, method: :get do |f| %>
-        <div class="mb-3">
+        <div class="mb-5">
           <p class="font-bold text-primary m-3">投稿する本を検索してください</p>
-          <%= f.search_field :search, class: "form-control w-60 mx-3", placeholder: '検索', value: params[:search] %>
+          <%= f.search_field :search, class: "form-control border border-gray-300 rounded-md w-60 mx-3 mb-1 p-2", placeholder: '検索', value: params[:search] %>
           <p class=""><small class="text-primary mx-3">書名・著者等で検索することができます。</small></p>
         </div>
         <%= f.submit t('defaults.search'), class: "btn py-4 w-60 mx-3 mb-3 rounded text-secondary" %>
