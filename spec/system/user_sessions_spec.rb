@@ -28,15 +28,9 @@ RSpec.describe 'UserSessions' do
   end
 
   describe 'ログイン後' do
-    before do
-      user_a = FactoryBot.create(:user)
-      visit login_path
-      fill_in 'メールアドレス', with: user.email
-      fill_in 'パスワード', with: 'password'
-      click_button 'ログイン'
-    end
     context 'ログアウトボタンをクリック' do
       it 'ログアウト処理が成功する' do
+        login_as(user)
         find_by_id('header-avatar').click
         click_button 'ログアウト'
         expect(page).to have_content 'ログアウトしました'

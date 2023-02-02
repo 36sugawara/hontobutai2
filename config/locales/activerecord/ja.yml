@@ -4,6 +4,7 @@ ja:
       user: 'ユーザー'
       book: '本'
       author: '著者'
+      profile: 'プロフィール'
     attributes:
       user:
         email: 'メールアドレス'
@@ -11,6 +12,7 @@ ja:
         password_confirmation: 'パスワード確認'
         name: '名前'
         avatar: 'プロフィール画像'
+        role: '権限'
       book:
         title: 'タイトル'
         body: 'レビュー'

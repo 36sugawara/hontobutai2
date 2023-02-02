@@ -4,6 +4,14 @@ FactoryBot.define do
     sequence(:email) { |n| "user_#{n}@example.com" }
     password { 'password' }
     password_confirmation { 'password' }
-    role { 0 }
+
+    trait :guest do
+      role { :guest }
+    end
+
+    trait :general do
+      sequence(:email) { |n| "general_#{n}@example.com" }
+      role { :general }
+    end
   end
 end
