@@ -1,28 +1,25 @@
 <% content_for(:title, t('.title')) %>
 <% breadcrumb :profile %>
-<div class="p-8 w-full flex flex-col lg:flex-row justify-between text-center">
-  <div class="bg-white card w-1/2 border text-primary m-3">
-    <div class="card-body">
-      <div class="flex items-center justify-center p-6">
-        <div class="form-control w-4/5 max-w-2xl">
-          <p class="text-center text-xl pb-6"><%= t '.title' %></p>
-          <div class="lg:flex">
-            <div class="place-self-center">
-              <%= image_tag current_user.avatar.url, class: 'w-24 h-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2' %>
-            </div>
-            <div class="flex flex-col justify-between py-6 pl-6">
-              <p>ユーザー名: <%= current_user.name %></p>
-              <% if current_user.role != 'guest' %>
-                <p>メールアドレス: <%= current_user.email %></p>
-              <% end %>
-            </div>
-          </div>
-          <%= link_to edit_profile_path do %>
-            <i class="ml-5 pt-10 fa-solid fa-pen-to-square fa-lg"></i>
-          <% end %>
-        </div>
-      </div>
-      <%= link_to "ブックマーク一覧", bookmarks_books_path, { class: "bg-neutral hover:bg-accent text-secondary text-center font-bold py-2 px-3 mb-3 border rounded" }%>
+<div class="w-full max-w-md my-24 mx-auto">
+  <div class="flex items-center justify-center space-x-4 px-10 py-4">
+    <div class="flex-shrink-0">
+      <%= image_tag current_user.avatar.url, class: 'w-24 h-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2' %>
     </div>
+    <div class="flex-1 min-w-0 pl-2">
+      <p class="text-primary truncate font-bold">
+        <%= current_user.name %> 
+      </p>
+      <% if current_user.role != 'guest' %>
+        <p class="text-gray-500 truncate">
+          <%= current_user.email %> 
+        </p>
+      <% end %>
+      <%= link_to edit_profile_path do %>
+        <i class="ml-5 pt-10 fa-solid fa-pen-to-square fa-lg"></i>
+      <% end %>
+    </div>
+  </div>
+  <div class="px-5 py-5">
+    <%= link_to "ブックマーク一覧", bookmarks_books_path, { class: "bg-neutral hover:bg-accent text-secondary text-center font-bold py-2 px-3 mb-3 border rounded" }%>
   </div>
 </div>
