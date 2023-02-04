@@ -16,10 +16,12 @@
               <p class="card-text flex justify-center"><small class="text-muted"><%= @book.published_date %></small></p>
               <p class="card-text flex justify-center"><%= @area[@book.country.area_id - 1] %></p>
               <p class="card-text flex justify-center"><%= @book.country.name %></p>
-              <p class="card-text flex justify-center"><%= @book.prefecture.name %></p>
+              <% if @book.prefecture.present? %>
+                <p class="card-text flex justify-center"><%= @book.prefecture.name %></p>
+              <% end %>
               <div class="flex flex-col mb-3">
                 <%= f.label :body, class: 'block form-label font-semibold text-primary mb-3' %>
-                <%= f.text_area :body, class: 'block w-full rounded-md border-gray-300', rows: 5, placeholder: '5文字以上で入力してください' %>
+                <%= f.text_area :body, class: 'block w-full rounded-md border border-gray-300 p-2', rows: 5, placeholder: '5文字以上で入力してください' %>
               </div>
               <%= f.submit class: "btn py-4 rounded text-secondary", id: 'submit-button' %>
             </div>
