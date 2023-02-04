@@ -19,7 +19,7 @@
         <% end %>
         <div class="flex border-top my-3 flex justify-center">
           <div class="flex items-center">
-            <%= image_tag @book.user.avatar_url, class: 'w-12 h-12 rounded-full mr-3 flex justify-center', size: '50x50' %><%= @book.user.name %><p class="card-text px-2">: <%= @book.body.truncate(30) %></p>
+            <%= image_tag @book.user.avatar_url, class: 'w-12 h-12 rounded-full mr-3 flex justify-center', size: '50x50' %><%= @book.user.name %><p class="card-text px-2">: <%= @book.body.truncate(100) %></p>
           </div>
         </div>
         <%= link_to '一覧に戻る', books_path, { class: "bg-neutral hover:bg-accent text-secondary text-center font-bold mt-2 py-2 px-3 border rounded" } %>
