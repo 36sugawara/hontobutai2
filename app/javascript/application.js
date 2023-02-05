@@ -4,3 +4,4 @@ import "./controllers"
 import jquery from "jquery"
 window.$ = window.jQuery = jquery
 import "./packs/area_select.js"
+import "./packs/area_search.js"
