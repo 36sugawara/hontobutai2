@@ -15,9 +15,6 @@
         <% if logged_in? %>
           <li><%= button_to "ログアウト", logout_path, method: :delete %></li>
         <% end %>
-        <%# if current_user.role == 'admin' %>
-          <!--li><%#= link_to t('menu.admin'), admin_root_path %></li-->
-        <%# end %>
       </ul>
     </div>
   </div>

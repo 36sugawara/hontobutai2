@@ -34,15 +34,6 @@
           </template>
         <% end %>
       </div>
-      <%#= render 'books/select', f: f %>
-      <!--div class="mb-3" id="area-select-form">
-        <%#= f.label :area, class: 'block form-label font-semibold text-primary' %>
-        <%#= f.select :area_id, @area, { include_blank: "エリアを選択" } , class: 'block border-gray-300 rounded-md mb-2', id: 'area' %>
-      </div>
-      <div class="mb-3" id="country-select-form">
-        <%#= f.label :country, class: 'block form-label font-semibold text-primary' %>
-        <%#= f.select :country_id, @country, { include_blank: "国を選択" } , class: 'block border-gray-300 rounded-md mb-2', id: 'country' %>
-      </div-->
       <div class="mb-5" id="prefecture-select-form">
         <%= f.select :prefecture_id, @prefecture, { include_blank: "都道府県を選択" } , class: 'border border-gray-300 rounded-md p-2', id: 'prefecture' %>
       </div>
