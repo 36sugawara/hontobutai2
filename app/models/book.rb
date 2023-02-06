@@ -10,7 +10,7 @@ class Book < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
 
   validates :title, presence: true, length: { maximum: 100 }
-  validates :body, presence: true, length: { minimum: 5 }
+  validates :body, presence: true, length: { in: 5..200 }
   validates :user_id, presence: true
   validates :country_id, presence: true
   validates :prefecture_id, length: { maximum: 2 }, allow_blank: true
