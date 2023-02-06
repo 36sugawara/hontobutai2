@@ -1,10 +1,10 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[edit update destroy]
+  before_action :set_areas, only: %i[index show edit]
 
   def index
     @q = Book.ransack(params[:q])
     @books = @q.result(distinct: true).includes(:authors, :country, :prefecture).order(created_at: :desc).page(params[:page])
-    set_areas
   end
 
   def new
@@ -32,12 +32,10 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    set_areas
   end
 
   def edit
     @book = Book.find(params[:id])
-    set_areas
   end
 
   def update
