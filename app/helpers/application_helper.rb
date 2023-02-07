@@ -8,6 +8,7 @@ module ApplicationHelper
     google_book['volumeInfo'].slice('title', 'authors', 'publishedDate', 'infoLink', 'bookImage')
   end
 
+  #タイトル設定
   def page_title(page_title = '', admin: false)
     base_title = if admin
                   'Hontobutai | 管理画面'
@@ -16,5 +17,33 @@ module ApplicationHelper
                 end
 
     page_title.empty? ? base_title : page_title + ' | ' + base_title
+  end
+
+  #メタタグ設定
+  def default_meta_tags
+    {
+      site: 'Hontubutai',
+      title: '気になる地域が舞台となっている小説や漫画を探してみよう！',
+      reverse: true,
+      separator: '|',
+      description: '「Hontobutai」は、気になる地域や思い入れのある地域が舞台となっている小説や漫画を探したい人向けの、本の検索・投稿サービスです。',
+      keywords: ' Hontobutai',
+      charset: 'UTF-8',
+      canonical: request.original_url,
+      noindex: ! Rails.env.production?,
+      og: {
+        site_name: 'Hontobutai',
+        title: '気になる地域が舞台となっている小説や漫画を探してみよう！',
+        description: '「Hontobutai」は、気になる地域や思い入れのある地域が舞台となっている小説や漫画を探したい人向けの、本の検索・投稿サービスです。',
+        type: 'website',
+        url: request.original_url,
+        image: image_url('ogp.png'),
+        locale: 'ja_JP',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        site: '@kame_maru01',
+      },
+    }
   end
 end
