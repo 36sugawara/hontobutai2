@@ -76,6 +76,8 @@ gem 'dotenv-rails'
 gem 'cancancan'
 #管理機能
 gem 'rails_admin', '~> 3.0'
+#メタタグ
+gem 'meta-tags'
 
 group :development, :test do
   gem 'capybara'
