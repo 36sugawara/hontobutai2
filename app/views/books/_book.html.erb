@@ -1,35 +1,36 @@
-<%# @books.each do |book| %>
-  <div class="bg-white card w-96 border text-primary m-3">
+<div class="bg-white card w-96 border text-primary m-3">
+  <div class="card-body">
+    <div class="flex justify-center">
+      <%= image_tag book.book_image.url, class: 'object-cover mt-2 border' %>
+    </div>
     <div class="card-body">
-      <div class="flex justify-center">
-        <%= image_tag book.book_image.url, class: 'object-cover mt-2 border' %>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title flex justify-center"><%= book.title.truncate(30) %></h5>
-        <p class="card-text flex justify-center"><%= book.authors.pluck(:name).join(', ')&.truncate(20) %></p>
-        <p class="card-text flex justify-center"><small class="text-muted"><%= book.published_date %></small></p>
-        <p class="card-text flex justify-center"><%= Area.where(id: book.country.area_id).first.name %></p>
-        <p class="card-text flex justify-center"><%= book.country.name %></p>
-        <% if book.prefecture.present? %>
-          <p class="card-text flex justify-center"><%= book.prefecture.name %></p>
-        <% end %>
-        <div class="flex border-top mb-2 flex justify-center">
-          <div class="flex items-center">
-            <%= image_tag book.user.avatar_url, class: 'w-12 h-12 rounded-full mr-3 flex justify-center', size: '50x50' %><%= book.user.name %><br>
-          </div>
+      <h5 class="card-title flex justify-center"><%= book.title.truncate(30) %></h5>
+      <p class="card-text flex justify-center">
+      <% book.authors.each do |author| %>
+        <%= link_to author.name, books_path(author_id: author.id), class: "link-success" %>
+      <% end %></p>
+      <p class="card-text flex justify-center"><small class="text-muted"><%= book.published_date %></small></p>
+      <p class="card-text flex justify-center"><%= Area.where(id: book.country.area_id).first.name %></p>
+      <p class="card-text flex justify-center"><%= book.country.name %></p>
+      <% if book.prefecture.present? %>
+        <p class="card-text flex justify-center"><%= book.prefecture.name %></p>
+      <% end %>
+      <div class="flex border-top mb-2 flex justify-center">
+        <div class="flex items-center">
+          <%= image_tag book.user.avatar_url, class: 'w-12 h-12 rounded-full mr-3 flex justify-center', size: '50x50' %><%= book.user.name %><br>
         </div>
-        <div class="mx-auto">
-          <p class="card-text"><%= book.body.truncate(30) %></p><br>
-        </div>
-        <%= link_to '詳細をみる', book_path(book), { class: "bg-neutral hover:bg-accent text-secondary text-center font-bold py-2 px-3 border rounded" } %>
       </div>
-      <div class="flex">
-        <% if current_user.own?(book) %>
-          <%= render 'crud_menus', { book: book } %>
-        <% else %>
-          <%= render 'actions/bookmark_button', { book: book } %>
-        <% end %>
+      <div class="mx-auto">
+        <p class="card-text"><%= book.body.truncate(30) %></p><br>
       </div>
+      <%= link_to '詳細をみる', book_path(book), { class: "bg-neutral hover:bg-accent text-secondary text-center font-bold py-2 px-3 border rounded" } %>
+    </div>
+    <div class="flex">
+      <% if current_user.own?(book) %>
+        <%= render 'crud_menus', { book: book } %>
+      <% else %>
+        <%= render 'actions/bookmark_button', { book: book } %>
+      <% end %>
     </div>
   </div>
-<%# end %>
+</div>
