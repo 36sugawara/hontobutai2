@@ -3,8 +3,15 @@ class BooksController < ApplicationController
   before_action :set_areas, only: %i[index show edit]
 
   def index
-    @q = Book.ransack(params[:q])
-    @books = @q.result(distinct: true).includes(:authors, :country, :prefecture).order(created_at: :desc).page(params[:page])
+    #作者の投稿を絞り込むための場合分け
+    if params[:author_id]
+      @author = Author.find(params[:author_id])
+      @q = @author.books.ransack(params[:q])
+      @books = @q.result(distinct: true).includes(:authors, :country, :prefecture).order(created_at: :desc).page(params[:page])
+    else
+      @q = Book.ransack(params[:q])
+      @books = @q.result(distinct: true).includes(:authors, :country, :prefecture).order(created_at: :desc).page(params[:page])
+    end
   end
 
   def new
