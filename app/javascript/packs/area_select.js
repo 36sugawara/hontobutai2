@@ -1,5 +1,4 @@
 import $ from 'jquery'
-//$("#hoge").css("color","red")
 
 $(document).on('turbo:load', function() {
   //HTMLが読み込まれた時の処理
