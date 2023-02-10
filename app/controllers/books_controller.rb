@@ -17,9 +17,7 @@ class BooksController < ApplicationController
   def new
     @book = Book.new
     @volume_info = params[:volumeInfo]
-    set_area
-    set_country
-    set_prefecture
+    set_area_country_prefecture
   end
 
   def create
@@ -28,9 +26,7 @@ class BooksController < ApplicationController
       current_user.books << @book
       redirect_to books_path, success: t('defaults.message.created', item: t('defaults.post'))
     else
-      set_area
-      set_country
-      set_prefecture
+      set_area_country_prefecture
       set_volume_info
       flash.now[:danger] = t('defaults.message.not_created', item: t('defaults.post'))
       render :new, status: :unprocessable_entity
@@ -101,15 +97,9 @@ class BooksController < ApplicationController
     @volume_info[:publishedDate] = params[:book][:published_date]
   end
 
-  def set_area
+  def set_area_country_prefecture
     @area = Area.pluck(:name, :id)
-  end
-
-  def set_country
     @country = Country.pluck(:name, :id)
-  end
-
-  def set_prefecture
     @prefecture = Prefecture.pluck(:name, :id)
   end
 
