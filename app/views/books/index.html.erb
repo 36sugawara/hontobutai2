@@ -1,18 +1,9 @@
 <% content_for(:title, t('.title')) %>
 <% breadcrumb :books %>
 <div class="container mx-auto px-3 my-3">
+  
   <!-- 検索フォーム -->
-  <%= search_form_for @q do |f| %>
-    <%= f.collection_select :country_area_id_eq, Area.where(id: Book.all.map{ |a| a.country.area_id }), :id, :name, { include_blank: "エリア" }, {class: 'text-primary border border-gray-300 rounded-md mb-2 ml-3 w-40 p-2'} %>
-    <%= f.select :country_id_eq, [], { include_blank: "国" }, class: 'text-primary border border-gray-300 w-40 rounded-md mb-2 ml-3 w-40 p-2' %>
-    <% Area.where(id: Book.all.map{ |a| a.country.area_id }).each do |area| %>
-      <template id="country-area<%= area.id %>">
-        <%= f.collection_select :country_id_eq, area.countries.where(id: Book.all.map{ |a| a.country.id }), :id, :name, { include_blank: "国" }, class: 'text-primary border border-gray-300 w-40 rounded-md mb-2 ml-3 w-40 p-2' %>
-      </template>
-    <% end %>
-    <%= f.collection_select :prefecture_id_eq, Prefecture.where(id: Book.all.map{ |b| b.prefecture_id }), :id, :name, {include_blank: '都道府県'}, {class: "text-primary border border-gray-300 rounded-md mb-2 ml-3 w-40 p-2"} %>
-    <%= f.submit t('defaults.search'), class: 'btn w-40 ml-3 mb-2 rounded text-secondary' %>
-  <% end %>
+  <%= render 'books/search_form', q: @q %>
   <!-- 投稿一覧 -->
   <% if @books.present? %>
     <div class="flex flex-wrap">
