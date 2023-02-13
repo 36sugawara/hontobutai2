@@ -21,22 +21,70 @@
         <%= f.text_area :body, class: 'block w-1/2 rounded-md border border-gray-300 p-2', rows: 5, placeholder: '5文字以上で入力してください' %>
       </div>
       <div class="mb-3 font-semibold text-primary"><p>本の舞台を選択してください</p></div>
+      <!--div class="flex flex-col">
+        <%#= f.collection_select :area_id, Area.all, :id, :name, { include_blank: "エリアを選択" }, class: 'border border-gray-300 rounded-md w-40 p-2 mb-3' %>
+      </div>
+      <div>
+        <%#= f.select :country_id, [], { include_blank: "国を選択" }, class: 'border border-gray-300 w-40 rounded-md p-2' %>
+      </div>
+      <div class="mb-3">
+        <%# Area.all.each do |area| %>
+          <template id="country-of-area<%#= area.id %>">
+            <%#= f.collection_select :country_id, area.countries, :id, :name, { include_blank: "国を選択" }, class: 'border border-gray-300 w-40 rounded-md p-2' %>
+          </template>
+        <%# end %>
+      </div>
+      <div class="mb-5" id="prefecture-select-form">
+        <%#= f.select :prefecture_id, @prefecture, { include_blank: "都道府県を選択" } , class: 'border border-gray-300 rounded-md p-2', id: 'prefecture' %>
+      </div-->
+      <!--3つ連動 -->
       <div class="flex flex-col">
         <%= f.collection_select :area_id, Area.all, :id, :name, { include_blank: "エリアを選択" }, class: 'border border-gray-300 rounded-md w-40 p-2 mb-3' %>
       </div>
-      <div>
-        <%= f.select :country_id, [], { include_blank: "国を選択" }, class: 'border border-gray-300 w-40 rounded-md p-2' %>
+      <!-- countryが差し込ませるポイントを指定するために追加　※１ -->
+      <div id="country_insert_point"></div>
+      <!-- -----------EDIT時、countryのダミー表示の切替 ※２--->
+      <div id="country">
+        <div class="field">
+          <% if @countries.blank? %>
+            <%= f.select :country_id, [], { include_blank: "国を選択" }, class: 'border border-gray-300 w-40 rounded-md p-2 mb-3' %>
+          <% else %>
+            <%= f.collection_select :country_id, @countries, :id, :name, { include_blank: "国を選択", prompt: false }, class: 'border border-gray-300 w-40 rounded-md p-2 mb-3' %>
+          <% end %>
+        </div>
       </div>
-      <div class="mb-3">
-        <% Area.all.each do |area| %>
-          <template id="country-of-area<%= area.id %>">
-            <%= f.collection_select :country_id, area.countries, :id, :name, { include_blank: "国を選択" }, class: 'border border-gray-300 w-40 rounded-md p-2' %>
+      <!-- prefectureが差し込ませるポイントを指定するために追加 -->
+      <div id="prefecture_insert_point"></div>
+      <!-- -----------EDIT時、prefectureのダミー表示の切替 --->
+      <div id="prefecture">
+        <div class="field ">
+            <% if @prefectures.blank?  %>
+              <%= f.select :prefecture_id, [], { include_blank: "都道府県を選択 (日本のみ)" }, class: 'border border-gray-300 w-60 rounded-md p-2 mb-3' %>
+            <% else %>
+              <%= f.collection_select :prefecture_id, @prefectures, :id, :name, { include_blank: "都道府県を選択 (日本のみ)", prompt: false }, class: 'border border-gray-300 w-60 rounded-md p-2 mb-3' %>
+            <% end %>
+        </div>
+      </div>
+      <!-- -----------countryのtemplateを作成 ※3---------------------- -->
+      <% Area.all.each do |area| %>
+        <template id="country_<%= area.id %>"><!-- このidをもとに呼び出される-->
+          <div id="selected_country">
+            <div class="field" >
+              <%= f.collection_select :country_id, area.countries, :id, :name, { include_blank: "国を選択", prompt: false }, class: 'border border-gray-300 w-40 rounded-md p-2 mb-3' %>
+            </div>
+          </div>
+        </template>
+        <!-- -----------countryのtemplate作成途中に、prefectureのtemplateを作成を挟む※4---------------------- -->
+        <% area.countries.each do |country| %>
+          <template id="prefecture_<%= country.id %>"><!-- このidをもとに呼び出される-->
+            <div id="selected_prefecture">
+              <div class="field" >
+                <%= f.collection_select :prefecture_id, country.prefectures, :id, :name, { include_blank: "都道府県を選択 (日本のみ)", prompt: false }, class: 'border border-gray-300 w-60 rounded-md p-2 mb-3' %>
+              </div>
+            </div>
           </template>
         <% end %>
-      </div>
-      <div class="mb-5" id="prefecture-select-form">
-        <%= f.select :prefecture_id, @prefecture, { include_blank: "都道府県を選択" } , class: 'border border-gray-300 rounded-md p-2', id: 'prefecture' %>
-      </div>
+      <% end %>
       <%= f.hidden_field :title, value: @volume_info[:title] %>
       <%= f.hidden_field :published_date, value: @volume_info[:publishedDate] %>
       <%= f.hidden_field :info_link, value: @volume_info[:infoLink] %>
