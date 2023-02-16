@@ -1,9 +1,9 @@
 Country.seed(:id, [
-  { id: 1, name: '日本', area_id: 1 },
+  { id: 1, name: '日本', area_id: 1, country_code: "JP" },
   { id: 2, name: '韓国', area_id: 1 },
   { id: 3, name: '北朝鮮', area_id: 1 },
   { id: 4, name: '台湾', area_id: 1 },
-  { id: 5, name: '中国', area_id: 1 },
+  { id: 5, name: '中国', area_id: 1, country_code: "CN" },
   { id: 6, name: '香港', area_id: 1 },
   { id: 7, name: '東ティモール', area_id: 1 },
   { id: 8, name: 'マカオ', area_id: 1 },

@@ -1,7 +1,172 @@
 <% content_for(:title, t('.title')) %>
 <% breadcrumb :books %>
 <div class="container mx-auto px-3 my-3">
-  
+  <div id="regions_div" class="mx-auto" style="width: 900px; height: 500px;"></div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+    google.charts.load('current', {
+        'packages':[
+            'geochart'
+        ],
+        'mapsApiKey': ''
+    });
+
+    google.charts.setOnLoadCallback(drawRegionsMap);
+
+    // 国がクリックされたら、国名コードをGETパラメータにして投稿一覧ページへ送る
+    function selectHandler(reg) {
+        window.location.href = '/books?q%5Bcountry_id_eq%5D=' + 'Country.where(country_code: reg.region).id' + '5&q%5Bcountry_code_eq%5D=' + reg.region;
+    }
+
+    function drawRegionsMap() {
+        // 国名コードと国の表示名の配列をここで読み込んでください。
+        const codes = [
+            ["Country", "Name"],
+            ["JP", "日本"],
+            ["KR", "韓国"],
+            ["KP", "北朝鮮"],
+            ["TW", "台湾"],
+            ["CN", "中国"],
+            ["HK", "香港"],
+            ["TL", "東ティモール"],
+            ["MO", "マカオ"],
+            ["IN", "インド"],
+            ["ID", "インドネシア"],
+            ["KH", "カンボジア"],
+            ["SG", "シンガポール"],
+            ["LK", "スリランカ"],
+            ["TH", "タイ"],
+            ["NP", "ネパール"],
+            ["PK", "パキスタン"],
+            ["BD", "バングラデシュ"],
+            ["PH", "フィリピン"],
+            ["BT", "ブータン"],
+            ["BN", "ブルネイ"],
+            ["VN", "ベトナム"],
+            ["MY", "マレーシア"],
+            ["MM", "ミャンマー"],
+            ["MV", "モルディブ"],
+            ["MN", "モンゴル"],
+            ["LA", "ラオス"],
+            ["AU", "オーストラリア"],
+            ["CK", "クック諸島"],
+            ["WS", "サモア"],
+            ["SC", "セイシェル"],
+            ["SB", "ソロモン諸島"],
+            ["TV", "ツバル"],
+            ["TO", "トンガ"],
+            ["NC", "ニューカレドニア"],
+            ["NZ", "ニュージーランド"],
+            ["PG", "パプアニューギニア"],
+            ["PW", "パラオ"],
+            ["FJ", "フィジー"],
+            ["US", "アメリカ"],
+            ["CA", "カナダ"],
+            ["AR", "アルゼンチン"],
+            ["CU", "キューバ"],
+            ["UY", "ウルグアイ"],
+            ["EC", "エクアドル"],
+            ["CR", "コスタリカ"],
+            ["CO", "コロンビア"],
+            ["JM", "ジャマイカ"],
+            ["CL", "チリ"],
+            ["PA", "パナマ"],
+            ["PY", "パラグアイ"],
+            ["BR", "ブラジル"],
+            ["VE", "ベネズエラ"],
+            ["PE", "ペルー"],
+            ["BO", "ボリビア"],
+            ["MX", "メキシコ"],
+            ["IS", "アイスランド"],
+            ["IE", "アイルランド"],
+            ["AL", "アルバニア"],
+            ["AM", "アルメニア"],
+            ["GB", "イギリス"],
+            ["IT", "イタリア"],
+            ["UA", "ウクライナ"],
+            ["UZ", "ウズベキスタン"],
+            ["EE", "エストニア"],
+            ["AT", "オーストリア"],
+            ["NL", "オランダ"],
+            ["KZ", "カザフスタン"],
+            ["GR", "ギリシャ"],
+            ["GL", "グリーンランド"],
+            ["HR", "クロアチア"],
+            ["GE", "ジョージア"],
+            ["CH", "スイス"],
+            ["SE", "スウェーデン"],
+            ["ES", "スペイン"],
+            ["SK", "スロバキア"],
+            ["SI", "スロベニア"],
+            ["CZ", "チェコ"],
+            ["DK", "デンマーク"],
+            ["DE", "ドイツ"],
+            ["NO", "ノルウェー"],
+            ["VA", "バチカン"],
+            ["FI", "フィンランド"],
+            ["FR", "フランス"],
+            ["BG", "ブルガリア"],
+            ["BE", "ベルギー"],
+            ["PL", "ポーランド"],
+            ["PT", "ポルトガル"],
+            ["MT", "マルタ"],
+            ["MC", "モナコ"],
+            ["ME", "モンテネグロ"],
+            ["LV", "ラトビア"],
+            ["LT", "リトアニア"],
+            ["RO", "ルーマニア"],
+            ["RU", "ロシア"],
+            ["AF", "アフガニスタン"],
+            ["AE", "アラブ首長国連邦"],
+            ["IL", "イスラエル"],
+            ["IQ", "イラク"],
+            ["IR", "イラン"],
+            ["OM", "オマーン"],
+            ["QA", "カタール"],
+            ["KW", "クウェート"],
+            ["SA", "サウジアラビア"],
+            ["SY", "シリア"],
+            ["TR", "トルコ"],
+            ["JO", "ヨルダン"],
+            ["LB", "レバノン"],
+            ["DZ", "アルジェリア"],
+            ["AO", "アンゴラ"],
+            ["UG", "ウガンダ"],
+            ["EG", "エジプト"],
+            ["ET", "エチオピア"],
+            ["GH", "ガーナ"],
+            ["CM", "カメルーン"],
+            ["GN", "ギニア"],
+            ["KE", "ケニア"],
+            ["CI", "コートジボワール"],
+            ["ZM", "ザンビア"],
+            ["ZW", "ジンバブエ"],
+            ["SD", "スーダン"],
+            ["SO", "ソマリア"],
+            ["TZ", "タンザニア"],
+            ["TN", "チュニジア"],
+            ["NG", "ナイジェリア"],
+            ["NA", "ナミビア"],
+            ["BW", "ボツワナ"],
+            ["MG", "マダガスカル"],
+            ["ZA", "南アフリカ"],
+            ["SS", "南スーダン"],
+            ["MU", "モーリシャス"],
+            ["MR", "モーリタニア"],
+            ["MA", "モロッコ"],
+            ["LY", "リビア"],
+            ["RW", "ルワンダ"]
+        ];
+        const data = google.visualization.arrayToDataTable(codes);
+        const options = {
+            defaultColor:'#82AAE3',
+        };
+        const chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        google.visualization.events.addListener(chart, 'regionClick', selectHandler);
+        chart.draw(data, options);
+    }
+</script>
   <!-- 検索フォーム -->
   <%= render 'books/search_form', q: @q %>
   <!-- 投稿一覧 -->
