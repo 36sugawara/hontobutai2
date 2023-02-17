@@ -1,10 +1,10 @@
 <% content_for(:title, t('.title')) %>
 <% breadcrumb :profile_edit %>
-<div class="flex items-center justify-center p-12">
-  <div class="bg-white card w-1/2 border text-primary m-3">
+<div class="flex items-center justify-center px-12 pb-12 pt-5">
+  <div class="bg-white card w-full border text-primary m-3">
     <div class="card-body">
       <div class="flex items-center justify-center p-12">
-        <div class="form-control w-4/5 max-w-2xl">
+        <div class="form-control w-full max-w-2xl">
           <%= form_with model: @user, url: profile_path, local: true do |f| %>
             <%= render 'shared/error_messages', object: f.object %>   
             <%= f.label :avatar, class: "label" %>
