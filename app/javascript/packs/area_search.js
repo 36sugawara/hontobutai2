@@ -2,7 +2,7 @@ import $ from 'jquery'
 
 $(document).on('turbo:load', function() {
   //復活させるダミーのcountryのセレクトボックス
-  let defaultCountrySelect = `<div id="country"><div class="field"><div class="form-group"><select name="country", class="text-primary border border-gray-300 rounded-md mb-2 ml-3 w-50 p-3">
+  let defaultCountrySelect = `<div id="country"><div class="field"><div class="form-group"><select name="country", class="text-primary border border-gray-300 rounded-md mb-2 ml-3 w-40 p-3">
   <option value>---</option>
   </select></div></div></div>`;
   //復活させるダミーのprefectureのセレクトボックス
