@@ -8,13 +8,13 @@
   <div class="my-5">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
-        google.charts.load('current', {
-            'packages':[
-                'geochart'
-            ],
-            'mapsApiKey': '<%= ENV['GOOGLE_MAP_API'] %>'
-        });
-        
+      document.addEventListener("turbo:load", function() { 
+          google.charts.load('current', {
+              'packages':[
+                  'geochart'
+              ],
+              'mapsApiKey': '<%= ENV['GOOGLE_MAP_API'] %>'
+          });
         // モデルをJSON.parseする
         const modeljson_parse = (item) => {
           item = JSON.stringify(item);  // JSをjsonに置換
@@ -62,6 +62,7 @@
         }
 
         google.charts.setOnLoadCallback(drawRegionsMap);
+      });
     </script>
   </div>
   <!-- 検索フォーム -->
