@@ -36,14 +36,14 @@
       <% Area.all.each do |area| %>
         <template id="country_<%= area.id %>"><!-- このidをもとに呼び出される-->
           <div id="selected_country">
-            <%= f.collection_select :country_id_eq, area.countries, :id, :name, { include_blank: "国", prompt: false }, class: 'text-primary border border-gray-300 rounded-md mb-2 ml-3 w-40 p-3' %>
+            <%= f.collection_select :country_id_eq, area.countries.where(id: Book.all.map{ |a| a.country.id }), :id, :name, { include_blank: "国", prompt: false }, class: 'text-primary border border-gray-300 rounded-md mb-2 ml-3 w-40 p-3' %>
           </div>
         </template>
         <!-- -----------countryのtemplate作成途中に、prefectureのtemplateを作成を挟む※4---------------------- -->
         <% area.countries.each do |country| %>
           <template id="prefecture_<%= country.id %>"><!-- このidをもとに呼び出される-->
             <div id="selected_prefecture">
-              <%= f.collection_select :prefecture_id_eq, country.prefectures, :id, :name, { include_blank: "都道府県 (日本のみ)", prompt: false }, class: 'text-primary border border-gray-300 rounded-md mb-2 ml-3 w-50 p-3' %>
+              <%= f.collection_select :prefecture_id_eq, country.prefectures.where(id: Book.all.map{ |b| b.prefecture_id }), :id, :name, { include_blank: "都道府県 (日本のみ)", prompt: false }, class: 'text-primary border border-gray-300 rounded-md mb-2 ml-3 w-50 p-3' %>
             </div>
           </template>
         <% end %>
