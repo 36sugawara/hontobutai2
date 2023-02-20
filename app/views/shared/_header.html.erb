@@ -13,7 +13,7 @@
             <li><%= link_to "ログイン", login_path %></li>
             <li><%= link_to "ユーザー登録", new_user_path %></li>
           <% end %>
-          <li><%= link_to t('menu.index'), books_path %></li>
+          <li><%= link_to t('menu.index'), books_path, data: { turbo: false } %></li>
           <li><%= link_to t('menu.post'), search_books_path %></li>
           <li><%= link_to t('profiles.show.title'), profile_path %></li>
           <% if logged_in? %>
