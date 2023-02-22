@@ -78,6 +78,8 @@ gem 'cancancan'
 gem 'rails_admin', '~> 3.0'
 #メタタグ
 gem 'meta-tags'
+#Fly.ioでのデプロイ
+gem "dockerfile-rails", ">= 1.1", :group => :development
 
 group :development, :test do
   gem 'capybara'
