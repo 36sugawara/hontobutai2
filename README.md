@@ -1,5 +1,5 @@
 ## サービス名: Hontobutai
-https://hontobutai.com
+https://hontobutai.fly.dev
 
 ## サービス概要
 気になる地域や思い入れのある地域が舞台となっている小説や漫画を探したい人向けの、本の紹介・投稿サービスです。
