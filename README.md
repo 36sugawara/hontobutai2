@@ -14,14 +14,14 @@ https://hontobutai.fly.dev
 
 ## 主な機能
 ### 投稿作成機能
-投稿したい作品を検索します</br>
-<img src="https://i.gyazo.com/1404c0a44e4321e84a848ed446e9b19d.png" width="300px" height="500px"></br>
+<p align="left">
+投稿したい作品を検索・選択し、作品のレビューと本の舞台を入力して投稿を作成します</br>
+<img src="https://i.gyazo.com/1404c0a44e4321e84a848ed446e9b19d.png" width="300px" height="500px">
 
-検索結果から投稿したい作品を選択します</br>
-<img src="https://i.gyazo.com/47fc55b347014368fe15b3158c0dab5e.png" width="300px" height="500px"></br>
+<img src="https://i.gyazo.com/47fc55b347014368fe15b3158c0dab5e.png" width="300px" height="500px">
 
-レビュー、本の舞台を入力し、投稿作成が完了します</br>
-<img src="https://i.gyazo.com/b6fba8355eaed6b59c5d51a62cbdaba4.png" width="300px" height="500px"></br>
+<img src="https://i.gyazo.com/b6fba8355eaed6b59c5d51a62cbdaba4.png" width="300px" height="500px">
+</p>
 
 ### 投稿絞り込み機能
 世界地図またはセレクトボックスから舞台で作品を絞り込むことができます</br>
