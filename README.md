@@ -48,7 +48,12 @@ https://hontobutai.fly.dev
 - JavaScript
 - Tailswind CSS-daisyUI
 
-使用したAPI
+インフラ
+- PostgreSQL
+- Fly.io
+- AWS(Amazon S3, Route 53)
+
+API
  - Google Books API(本のデータの取得に使用)
 
 ## ER図
