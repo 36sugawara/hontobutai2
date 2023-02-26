@@ -16,11 +16,11 @@ https://hontobutai.fly.dev
 ### 投稿作成機能
 <p align="left">
 投稿したい作品を検索・選択し、作品のレビューと本の舞台を入力して投稿を作成します</br>
-<img src="https://i.gyazo.com/1404c0a44e4321e84a848ed446e9b19d.png" width="300px" height="500px">
+<img src="https://i.gyazo.com/1404c0a44e4321e84a848ed446e9b19d.png" width="200px" height="335px">
 
-<img src="https://i.gyazo.com/47fc55b347014368fe15b3158c0dab5e.png" width="300px" height="500px">
+<img src="https://i.gyazo.com/47fc55b347014368fe15b3158c0dab5e.png" width="200px" height="335px">
 
-<img src="https://i.gyazo.com/b6fba8355eaed6b59c5d51a62cbdaba4.png" width="300px" height="500px">
+<img src="https://i.gyazo.com/b6fba8355eaed6b59c5d51a62cbdaba4.png" width="200px" height="335px">
 </p>
 
 ### 投稿絞り込み機能
