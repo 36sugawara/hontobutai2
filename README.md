@@ -56,5 +56,17 @@ https://hontobutai.fly.dev
 API
  - Google Books API(本のデータの取得に使用)
 
+### 主要ライブラリ（gem）
+- `sorcery`（ユーザー登録、ログイン/ログアウト）
+- `kaminari`（ページネーション）
+- `gretel`（パンくず）
+- `ransack`（投稿検索）
+- `faraday`（API通信）
+- `rails-i18n`（i18n 国際化対応）
+- `cancancan`（権限管理）
+- `rails_admin`（管理画面の作成）
+- `meta-tags`（OGP、メタタグの設定）
+- `rspec-rails`（テストフレームワーク）
+
 ## ER図
 <img src="https://i.gyazo.com/515c77060fbca841d79348f362e65717.png" width="900px">
