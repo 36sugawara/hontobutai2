@@ -7,13 +7,13 @@
         <div class="form-control w-full max-w-2xl">
           <%= form_with model: @user, url: profile_path, local: true do |f| %>
             <%= render 'shared/error_messages', object: f.object %>   
-            <%= f.label :avatar, class: "label" %>
+            <%= f.label :avatar, class: "label font-bold" %>
             <%= f.file_field :avatar %>
             <%= f.hidden_field :avatar_cache %>
-            <%= f.label :name, class: "label" %>
+            <%= f.label :name, class: "label font-bold" %>
             <%= f.text_field :name, class: "input input-bordered w-full" %>
             <% if @user.role != 'guest' %>
-              <%= f.label :email, class: "label" %>
+              <%= f.label :email, class: "label font-bold" %>
               <%= f.text_field :email, class: "input input-bordered w-full" %>
             <% end %>
             <div class="py-4">
