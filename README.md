@@ -40,20 +40,20 @@ https://hontobutai.fly.dev
 - 管理画面
 
 ## 使用技術
-バックエンド
+**バックエンド**
 - Ruby 3.1.3
 - Ruby on Rails 7.0.4 
 
-フロントエンド
+**フロントエンド**
 - JavaScript
 - Tailswind CSS-daisyUI
 
-インフラ
+**インフラ**
 - PostgreSQL
 - Fly.io
 - AWS(Amazon S3, Route 53)
 
-API
+**API**
  - Google Books API(本のデータの取得に使用)
 
 ### 主要ライブラリ（gem）
