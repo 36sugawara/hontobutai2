@@ -12,6 +12,7 @@ class BooksController < ApplicationController
       @q = Book.ransack(params[:q])
       @books = @q.result(distinct: true).includes(:authors, :country, :prefecture).order(created_at: :desc).page(params[:page])
     end
+    #Geo chartで使用するモデルのデータをJSON化する
     @country = Country.all.to_json(only: [:id, :country_code])
     @book_countries = Country.where.associated(:books).uniq.to_json
   end
