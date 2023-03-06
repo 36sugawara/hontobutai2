@@ -1,13 +1,14 @@
 module ApplicationHelper
+  #取得した値にサムネ画像がなかった場合はsample.pngを付与する。
   def google_book_thumbnail(google_book)
     google_book['volumeInfo']['imageLinks'].nil? ? 'sample.png' : google_book['volumeInfo']['imageLinks']['thumbnail']
   end
 
-  #thumbnailはネストしている配置なのでdigを使って取り出す
-  #画像のリンクがhttpとなっているためgsubを使いhttpsに変更する。変更した値をbookImageに代入する
+  #必要な形式となるようデータを加工する。
+  #thumbnailはネストしている配置なのでdigを使って取り出す。
   def set_google_book_params(google_book)
     google_book['volumeInfo']['bookImage'] = google_book.dig('volumeInfo', 'imageLinks', 'thumbnail')
-    #volumeInfoの中が必要な項目のみになるようsliceを使って絞りこむ
+    #volumeInfoの中が必要な項目のみになるようsliceを使って絞りこむ。
     google_book['volumeInfo'].slice('title', 'authors', 'publishedDate', 'infoLink', 'bookImage')
   end
 
