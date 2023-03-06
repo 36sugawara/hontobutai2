@@ -65,7 +65,7 @@ class BooksController < ApplicationController
       flash.now[:danger] = '検索キーワードが入力されていません'
       return
     else
-      @google_books = SearchBooksService.call(params[:search]) #callは自作のメソッド
+      @google_books = SearchBooksService.call(params[:search]) #callは自作のメソッド。ユーザーが入力した検索条件をparams[:search]で受け取る。
     end
   end
 
