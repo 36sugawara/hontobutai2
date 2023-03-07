@@ -15,9 +15,11 @@ class Book < ApplicationRecord
   validates :country_id, presence: true
   validates :prefecture_id, length: { maximum: 2 }, allow_blank: true
 
+  #booksコントローラーのceateメソッド実行時に同時に実行してauthorsを保存するためのメソッド。
   def save_with_author(authors)
     ActiveRecord::Base.transaction do
       self.save!
+      #一覧から重複削除してnilを除去し、条件を指定して初めの1件を取得し1件もなければ作成する。
       self.authors = authors.uniq.reject(&:blank?).map { |name| Author.find_or_initialize_by(name: name.strip) } unless authors.nil?
     end
     true
