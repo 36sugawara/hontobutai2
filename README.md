@@ -50,7 +50,7 @@ https://hontobutai.com
 
 **インフラ**
 - PostgreSQL
-- Fly.io
+- Coolify
 - AWS(Amazon S3, Route 53)
 
 **API**
