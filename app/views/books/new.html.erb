@@ -9,6 +9,7 @@
           <h5 class="card-title"><%= @volume_info[:title] %></h5>
           <p class="card-text"><%= @volume_info[:authors]&.join(', ') %></p>
           <p class="card-text"><%= @volume_info[:publishedDate] %></p>
+          <p class="card-text"><%= @volume_info[:description] %></p>
           <%= link_to '詳細を見る', @volume_info[:infoLink], target: '_blank',  class: "font-bold"  %>
         </div>
       </div>

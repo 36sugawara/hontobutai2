@@ -9,7 +9,7 @@ module ApplicationHelper
   def set_google_book_params(google_book)
     google_book['volumeInfo']['bookImage'] = google_book.dig('volumeInfo', 'imageLinks', 'thumbnail')
     #volumeInfoの中が必要な項目のみになるようsliceを使って絞りこむ。
-    google_book['volumeInfo'].slice('title', 'authors', 'publishedDate', 'infoLink', 'bookImage')
+    google_book['volumeInfo'].slice('title', 'authors', 'publishedDate', 'infoLink', 'bookImage', 'description')
   end
 
   #タイトル設定
