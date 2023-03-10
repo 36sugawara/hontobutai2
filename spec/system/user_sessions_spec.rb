@@ -31,7 +31,6 @@ RSpec.describe 'UserSessions' do
     context 'ログアウトボタンをクリック' do
       it 'ログアウト処理が成功する' do
         login_as(user)
-        find_by_id('header-avatar').click
         click_button 'ログアウト'
         expect(page).to have_content 'ログアウトしました'
         expect(page).to have_current_path root_path, ignore_query: true
