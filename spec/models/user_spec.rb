@@ -19,16 +19,16 @@ RSpec.describe User, type: :model do
       expect(user.errors[:email]).to include('を入力してください')
     end
 
-    it 'パスワードが2文字では無効な状態であること' do
+    it 'パスワードが5文字では無効な状態であること' do
       user = build(:user, password: 'fo')
       user.valid?
-      expect(user.errors[:password]).to include('は3文字以上で入力してください')
+      expect(user.errors[:password]).to include('は6文字以上で入力してください')
     end
 
-    it 'パスワードが3文字あれば有効な状態であること' do
+    it 'パスワードが6文字あれば有効な状態であること' do
       user = build(:user, password: 'foo')
       user.valid?
-      expect(user.errors[:password]).not_to include('iは3文字以上で入力してください')
+      expect(user.errors[:password]).not_to include('iは6文字以上で入力してください')
     end
 
     it '重複するメールアドレスは無効であること' do
