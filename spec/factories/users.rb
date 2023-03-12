@@ -9,6 +9,11 @@ FactoryBot.define do
       role { :guest }
     end
 
+    trait :admin do
+      sequence(:email) { |n| "admin_#{n}@example.com" }
+      role { :admin }
+    end
+
     trait :general do
       sequence(:email) { |n| "general_#{n}@example.com" }
       role { :general }
