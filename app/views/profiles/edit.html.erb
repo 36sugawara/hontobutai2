@@ -1,27 +1,21 @@
 <% content_for(:title, t('.title')) %>
 <% breadcrumb :profile_edit %>
-<div class="flex items-center justify-center px-12 pb-12 pt-5">
-  <div class="bg-white card w-full border text-primary m-3">
-    <div class="card-body">
-      <div class="flex items-center justify-center p-12">
-        <div class="form-control w-full max-w-2xl">
-          <%= form_with model: @user, url: profile_path, local: true do |f| %>
-            <%= render 'shared/error_messages', object: f.object %>   
-            <%= f.label :avatar, class: "label font-bold" %>
-            <%= f.file_field :avatar %>
-            <%= f.hidden_field :avatar_cache %>
-            <%= f.label :name, class: "label font-bold" %>
-            <%= f.text_field :name, class: "input input-bordered w-full" %>
-            <% if @user.role != 'guest' %>
-              <%= f.label :email, class: "label font-bold" %>
-              <%= f.text_field :email, class: "input input-bordered w-full" %>
-            <% end %>
-            <div class="py-4">
-              <%= f.submit t('.save'), class: "btn text-secondary" %>
-            </div>
-          <% end %>
-        </div>
+<div class="p-4 flex flex-col w-full text-primary">
+  <%= form_with model: @user, url: profile_path, local: true do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="form-control">
+      <%= f.label :avatar, class: "label font-bold" %>
+      <%= f.file_field :avatar %>
+      <%= f.hidden_field :avatar_cache %>
+      <%= f.label :name, class: "label font-bold" %>
+      <%= f.text_field :name, class: "input input-bordered w-full" %>
+      <% if @user.role != 'guest' %>
+        <%= f.label :email, class: "label font-bold" %>
+        <%= f.text_field :email, class: "input input-bordered w-full" %>
+      <% end %>
+      <div class="py-4">
+        <%= f.submit t('.save'), class: "btn text-secondary" %>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>
