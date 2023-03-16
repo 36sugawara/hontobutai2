@@ -8,10 +8,10 @@
       <%= f.file_field :avatar %>
       <%= f.hidden_field :avatar_cache %>
       <%= f.label :name, class: "label font-bold" %>
-      <%= f.text_field :name, class: "input input-bordered w-full" %>
+      <%= f.text_field :name, class: "input input-bordered w-full bg-white" %>
       <% if @user.role != 'guest' %>
         <%= f.label :email, class: "label font-bold" %>
-        <%= f.text_field :email, class: "input input-bordered w-full" %>
+        <%= f.text_field :email, class: "input input-bordered w-full bg-white" %>
       <% end %>
       <div class="py-4">
         <%= f.submit t('.save'), class: "btn text-secondary" %>
