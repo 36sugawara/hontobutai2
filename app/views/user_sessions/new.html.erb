@@ -5,9 +5,9 @@
       <div class="bg-white card border-2 px-8 pt-8 pb-3 mb-3 rounded-lg">
         <%= form_with url: login_path, data: { turbo: false } do |f| %>
           <%= f.label :email, User.human_attribute_name(:email), class: "label font-bold text-primary" %>
-          <%= f.email_field :email, class: "w-full py-4 px-8 input input-bordered rounded", placeholder: "***@example.com" %>
+          <%= f.email_field :email, class: "w-full py-4 px-8 input input-bordered rounded text-primary", placeholder: "***@example.com" %>
           <%= f.label :password, User.human_attribute_name(:password), class: "label font-bold text-primary" %>
-          <%= f.password_field :password, class: "w-full py-4 px-8 input input-bordered rounded", placeholder: "password" %>
+          <%= f.password_field :password, class: "w-full py-4 px-8 input input-bordered rounded text-primary", placeholder: "password" %>
           <div class="py-4">
             <%= f.submit t('defaults.login'), class: "btn py-4 w-full rounded text-secondary" %>
           </div>
