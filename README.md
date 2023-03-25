@@ -46,7 +46,7 @@ https://hontobutai.com
 
 **フロントエンド**
 - JavaScript
-- Tailswind CSS-daisyUI
+- Tailswind CSS
 
 **インフラ**
 - PostgreSQL
